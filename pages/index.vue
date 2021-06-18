@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <Logo class="mx-auto" />
-      <h1 class="title">
+      <h1 class="title text-primary">
         livreur-foodz-up
       </h1>
       <div class="links">
@@ -20,26 +20,19 @@
           rel="noopener noreferrer"
           class="button--grey"
         >
-          GitHub {{ test }}
+          GitHub
         </a>
       </div>
-      <DsComponentFoodzUpSample />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { Greeter } from 'design-system-foodz-up'
-import { DsComponentFoodzUpSample } from 'ds-component-foodz-up'
 
 export default Vue.extend({
-  components: { DsComponentFoodzUpSample },
-  computed: {
-    test () {
-      return Greeter('e')
-    }
-  }
+  components: {},
+  computed: {}
 })
 </script>
 
@@ -72,7 +65,6 @@ export default Vue.extend({
   display: block;
   font-weight: 300;
   font-size: 100px;
-  color: #35495e;
   letter-spacing: 1px;
 }
 
