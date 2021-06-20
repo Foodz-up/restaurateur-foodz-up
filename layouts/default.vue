@@ -2,14 +2,16 @@
   <div>
     <Sidebar />
     <Nuxt />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Sidebar from '~/components/Navigation/Sidebar.vue'
+import Footer from '~/components/Navigation/Footer.vue'
 
 export default {
-  components: { Sidebar }
+  components: { Sidebar, Footer }
 }
 </script>
 
