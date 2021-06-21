@@ -29,7 +29,11 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
     share: () => import('~/components/Svg/SvgShare.vue'),
     copy: () => import('~/components/Svg/SvgCopy.vue'),
     'master-card': () => import('~/components/Svg/SvgMasterCard.vue'),
-    sponsor: () => import('~/components/Svg/SvgSponsor.vue')
+    sponsor: () => import('~/components/Svg/SvgSponsor.vue'),
+    frites: () => import('~/components/Svg/SvgFrites.vue'),
+    menu: () => import('~/components/Svg/SvgMenu.vue'),
+    stat: () => import('~/components/Svg/SvgStat.vue'),
+    ticket: () => import('~/components/Svg/SvgTicket.vue')
   }
 })
 export default class DynamicSvg extends Vue {

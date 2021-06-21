@@ -46,7 +46,7 @@
                   <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                     <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                       <nuxt-link v-for="(link, index2) in navigation.links" :key="index2" class="flex" :to="link.to">
-                        <DynamicSvg :component-name="link.logo" />
+                        <DynamicSvg class="w-20" :component-name="link.logo" />
                         <div class="ml-4">
                           <p class="text-base font-medium text-gray-900">
                             {{ link.title }}
@@ -165,8 +165,8 @@ export default class Sidebar extends Vue {
             { title: 'Menus', description: 'Composez des menus depuis vos articles', logo: 'profil', to: 'Menus' }
           ]
         },
-        { title: 'Commandes', logo: 'profil', to: 'commandes' },
-        { title: 'Statistiques', logo: 'profil', to: 'Statistiques' }
+        { title: 'Commandes', logo: 'frites', to: 'commandes' },
+        { title: 'Statistiques', logo: 'frites', to: 'Statistiques' }
       ]
 
       menuToggle () {
