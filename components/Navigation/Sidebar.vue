@@ -45,8 +45,8 @@
                 <div :class="{ hidden: !menu }" class="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
                   <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                     <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                      <nuxt-link v-for="(link, index2) in navigation.links" :key="index2" class="flex" :to="link.to">
-                        <DynamicSvg class="w-20" :component-name="link.logo" />
+                      <nuxt-link v-for="(link, index2) in navigation.links" :key="index2" class="flex items-center" :to="link.to">
+                        <DynamicSvg :width="30" class="text-primary" :component-name="link.logo" />
                         <div class="ml-4">
                           <p class="text-base font-medium text-gray-900">
                             {{ link.title }}
@@ -67,7 +67,9 @@
           </div>
         </nav>
         <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          <nuxt-link to="profile">
+            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -94,33 +96,15 @@
           </div>
           <div v-for="(navigation, index3) in navigations" :key="index3" class="mt-6">
             <div v-if="navigation.links">
-              <div v-for="(link, index4) in navigation.links" :key="index4" class="flex mt-6">
-                <svg
-                  class="flex-shrink-0 h-6 w-6 text-indigo-600"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
+              <div v-for="(link, index4) in navigation.links" :key="index4" class="flex items-center mt-6">
+                <DynamicSvg :width="20" class="text-primary" :component-name="link.logo" />
                 <span class="ml-3 text-base font-medium text-gray-900">
                   {{ link.title }}
                 </span>
               </div>
             </div>
-            <div v-else class="flex">
-              <svg
-                class="flex-shrink-0 h-6 w-6 text-indigo-600"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
+            <div v-else class="flex items-center">
+              <DynamicSvg :width="20" class="text-primary" :component-name="navigation.logo" />
               <span class="ml-3 text-base font-medium text-gray-900">
                 {{ navigation.title }}
               </span>
@@ -161,12 +145,12 @@ export default class Sidebar extends Vue {
         {
           title: 'Carte',
           links: [
-            { title: 'Articles', description: 'Créer les articles que vous souhaitre vendre', logo: 'profil', to: 'Articles' },
-            { title: 'Menus', description: 'Composez des menus depuis vos articles', logo: 'profil', to: 'Menus' }
+            { title: 'Articles', description: 'Créer les articles que vous souhaitre vendre', logo: 'pizza', to: 'Articles' },
+            { title: 'Menus', description: 'Composez des menus depuis vos articles', logo: 'utensil', to: 'Menus' }
           ]
         },
-        { title: 'Commandes', logo: 'frites', to: 'commandes' },
-        { title: 'Statistiques', logo: 'frites', to: 'Statistiques' }
+        { title: 'Commandes', logo: 'ticket', to: 'commandes' },
+        { title: 'Statistiques', logo: 'stat', to: 'Statistiques' }
       ]
 
       menuToggle () {
