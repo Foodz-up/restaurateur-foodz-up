@@ -2,7 +2,7 @@
   <div class="relative bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex justify-between items-center border-t-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-        <div class="flex items-center justify-between lg:w-0 lg:flex-1">
+        <div class="flex flex-col sm:flex-row items-center justify-between lg:w-0 lg:flex-1">
           <div class="flex">
             <a href="#">
               <img
@@ -12,13 +12,13 @@
               >
             </a>
           </div>
-          <div class="flex">
-            <a href="#" class="mx-4 text-base font-medium text-gray-500 hover:text-gray-900">
+          <div class="flex my-4 sm:my-0">
+            <nuxt-link to="politique" class="mx-4 text-base font-medium text-gray-500 hover:text-gray-900">
               Politique de confidentialité
-            </a>
-            <a href="#" class="mx-4 text-base font-medium text-gray-500 hover:text-gray-900">
+            </nuxt-link>
+            <nuxt-link to="Conditions" class="mx-4 text-base font-medium text-gray-500 hover:text-gray-900">
               Conditions
-            </a>
+            </nuxt-link>
           </div>
           <div class="flex">
             <svg

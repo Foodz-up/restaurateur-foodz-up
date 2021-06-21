@@ -17,6 +17,7 @@
     "core-js": "^3.9.1",
     "ds-component-foodz-up": "^0.0.6",
     "nuxt": "^2.15.3",
+    "nuxt-property-decorator": "^2.9.1",
     "vuex-typescript": "^3.0.2"
   },
   "devDependencies": {
