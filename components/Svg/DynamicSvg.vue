@@ -33,7 +33,11 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
     pizza: () => import('~/components/Svg/SvgPizza.vue'),
     ticket: () => import('~/components/Svg/SvgTicket.vue'),
     stat: () => import('~/components/Svg/SvgStat.vue'),
-    utensil: () => import('~/components/Svg/SvgUtensil.vue')
+    utensil: () => import('~/components/Svg/SvgUtensil.vue'),
+    biking: () => import('~/components/Svg/SvgBiking.vue'),
+    calendar: () => import('~/components/Svg/SvgCalendar.vue'),
+    search: () => import('~/components/Svg/SvgSearch.vue'),
+    store: () => import('~/components/Svg/SvgStore.vue')
   }
 })
 export default class DynamicSvg extends Vue {

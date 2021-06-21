@@ -8,7 +8,7 @@
             <span class="sr-only">Workflow</span>
             <img
               class="h-8 w-auto sm:h-10"
-              src="~/assets/img/LogoFoodzUp.png"
+              src="~/assets/Logo.png"
               alt=""
             >
           </a>
