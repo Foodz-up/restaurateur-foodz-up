@@ -19,6 +19,8 @@
     "nuxt": "^2.15.3",
     "nuxt-property-decorator": "^2.9.1",
     "nuxt-socket-io": "^1.1.18",
+    "socket.io-client": "^4.1.2",
+    "vue-socket.io": "^3.0.10",
     "vuex-typescript": "^3.0.2"
   },
   "devDependencies": {
