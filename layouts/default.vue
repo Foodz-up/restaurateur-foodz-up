@@ -1,7 +1,7 @@
 <template>
   <div>
     <Sidebar />
-    <Nuxt />
+    <Nuxt class="my-10 custom-layout-height" />
     <Footer />
   </div>
 </template>
@@ -16,8 +16,13 @@ export default {
 </script>
 
 <style>
+.custom-layout-height{
+  min-height: calc(100vh - 260px)
+}
+
 html {
   font-family:
+  'Montserrat',
     'Source Sans Pro',
     -apple-system,
     BlinkMacSystemFont,
@@ -69,5 +74,21 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.max-w-300px {
+  max-width: 300px;
+}
+
+*, button {
+  outline: none!important;
 }
 </style>

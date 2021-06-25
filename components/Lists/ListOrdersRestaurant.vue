@@ -1,0 +1,59 @@
+<template>
+  <div>
+    <div v-for="(orderArrayByStatus, index) in splitedByStatus" :key="index" class="w-full px-4">
+      <h2 class="text-3xl font-semibold mt-24 mb-8 text-primary">
+        {{ orderArrayByStatus[0].status }}
+      </h2>
+      <div class="grid gap-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <CardOrderRestaurant
+          v-for="order in orderArrayByStatus"
+          :id="order.id"
+          :key="order.id"
+          :order-number="order.orderNumber"
+          :status="order.status"
+          :price="order.price"
+          :items-number="order.itemsNumber"
+          :restaurant-id="order.restaurantID"
+          class="pb-5 border-gray-100 border-b-2 sm:border-none sm:pb-0 w-auto"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { Component, Vue, Prop } from 'nuxt-property-decorator'
+import CardOrderRestaurant from '~/components/Cards/CardOrderRestaurant.vue'
+
+@Component({
+  components: { CardOrderRestaurant }
+})
+
+export default class ListOrdersRestaurant extends Vue {
+    // TODO: need type
+    @Prop({ required: true })
+    orders!: Array<
+    { id: number, orderNumber: string, price: number, status: string, date: Date, itemsNumber: number, restaurantId: number }
+    |
+    { id: number, orderNumber: string, price: number, status: string, date: Date, itemsNumber: number, restaurantId: number }
+    >
+
+    get splitedByStatus () {
+      const newObject = this.orders.reduce(function (obj, value) {
+        const key = value.status
+        // @ts-ignore
+        if (obj[key] == null) { obj[key] = [] }
+
+        // @ts-ignore
+        obj[key].push(value)
+        return obj
+      }, {})
+
+      return newObject
+    }
+}
+</script>
+
+<style scoped>
+
+</style>
