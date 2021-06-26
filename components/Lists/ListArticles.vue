@@ -20,7 +20,7 @@
           @needUpdateCard="openModal(article.id)"
         />
       </div>
-      <Modal :class="{'hidden': !modal}" @save="editArticle()" @cancel="closeModal()">
+      <Modal :class="{'hidden': !modal}" @save="editArticle()" @remove="deleteArticle()" @cancel="closeModal()">
         <FormArticle :form-article="formArticle" />
       </Modal>
     </div>
@@ -32,26 +32,23 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import CardArticleRestaurant from '~/components/Cards/CardArticleRestaurant.vue'
 import Modal from '~/components/Others/Modal.vue'
 import FormArticle from '~/components/Forms/FormArticle.vue'
+import { Article } from '~/store/article/class'
+import { IArticle } from '~/store/interfaces'
 
 @Component({
   components: { CardArticleRestaurant, Modal, FormArticle }
 })
 
 export default class ListArticles extends Vue {
-    // TODO: need type
     @Prop({ required: true })
-    articles!: Array<{ id: number, type: string, name: string, description: string, price: number, tag: string, menuArticles: Array<object> }>
+    articles!: Array<IArticle>
 
     @Prop({ required: true })
     restaurantId!: number
 
     modal:boolean = false;
-
     idSelectedArticle: number =0;
-
-    formArticle: { type: string, name: string, description: string, price?: number, tag?: string } = {
-      type: '', name: '', description: ''
-    }
+    formArticle: IArticle = new Article()
 
     get splitedByType () {
       const newObject = this.articles.reduce(function (obj, value) {
@@ -75,8 +72,18 @@ export default class ListArticles extends Vue {
     }
 
     closeModal () {
-      this.formArticle = {}
+      this.formArticle = new Article()
       this.modal = false
+    }
+
+    editArticle () {
+      this.$emit('editArticle', this.formArticle)
+      this.closeModal()
+    }
+
+    deleteArticle () {
+      this.$emit('deleteArticle', this.formArticle)
+      this.closeModal()
     }
 }
 </script>

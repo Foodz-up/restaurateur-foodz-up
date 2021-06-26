@@ -14,6 +14,7 @@
         :class="{'pl-16': icon}"
         class="pl-5 text-lg w-full placeholder-gray-500 py-2 font-medium text-gray-800 bg-gray-200 rounded-full"
         :value="value"
+        @input="$emit('input', $event.target.value)"
       >
         <option v-for="(option, index) in optionList" :key="index" :value="option.name">
           {{ option.name }}
@@ -32,9 +33,7 @@ import DynamicSvg from '~/components/Svg/DynamicSvg.vue'
 })
 export default class InputSelect extends Vue {
   @Prop()
-  optionList!: Array<
-    { name: string }
-    >
+  optionList!: Array<{ name: string }>
 
   @Prop()
   icon!: string
@@ -50,6 +49,15 @@ export default class InputSelect extends Vue {
 
   @Prop()
   value!: string
+
+  changeValue (option: string) {
+    this.value = option
+    console.log(this.value)
+  }
+
+  test (e:string) {
+    console.log(e)
+  }
 }
 </script>
 

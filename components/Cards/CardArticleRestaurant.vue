@@ -18,6 +18,7 @@
           </span>
         </div>
       </div>
+      {{ type }}
       <ButtonFoodzUp :title="'Modifier'" class="w-24 mt-4 bg-primary text-white hover:bg-primary-80 self-end" @buttonClicked="askForUpdateCard()" />
     </div>
   </div>

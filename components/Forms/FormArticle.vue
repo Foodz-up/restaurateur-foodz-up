@@ -10,7 +10,7 @@
       v-model="formArticle.type"
       :value="formArticle.type"
       :variable-description="'Type d\'article'"
-      :input-variable="formArticle.type"
+      :input-variable="'typearticle'"
       class=" mt-2"
       :option-list="optionList"
     />
@@ -18,7 +18,7 @@
       v-model="formArticle.description"
       :value="formArticle.description"
       :variable-description="'Description'"
-      :input-variable="'address'"
+      :input-variable="'description'"
       class="mt-2"
       :placeholder="'Ex: Bon sandwich bien fourni'"
     />
@@ -26,9 +26,17 @@
       v-model="formArticle.price"
       :value="formArticle.price"
       :variable-description="'Prix'"
-      :input-variable="'address'"
+      :input-variable="'price'"
       class="mt-2"
       :placeholder="'Ex: 5'"
+    />
+    <InputFoodzUp
+      v-model="formArticle.tag"
+      :value="formArticle.tags"
+      :variable-description="'Tag (optionel)'"
+      :input-variable="'tag'"
+      class="mt-2"
+      :placeholder="'Ex: Nouveau'"
     />
   </form>
 </template>
@@ -50,7 +58,7 @@ export default class FormArticle extends Vue {
     ]
 
     @Prop({ required: true })
-    formArticle!: { type: string, name: string, description: string, price: number }
+    formArticle!: { type: string, name: string, description: string, price: number, tag?:string }
 }
 </script>
 
