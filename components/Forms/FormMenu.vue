@@ -22,19 +22,29 @@
       class="mt-2"
       :placeholder="'Ex: 5'"
     />
+    <InputSelect
+      v-model="formMenu.type"
+      :value="formMenu.type"
+      :variable-description="'Type de restaurant'"
+      :input-variable="'type'"
+      class=" mt-2"
+      :option-list="optionList"
+    />
   </form>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
-import InputFoodzUp from '~/components/Inputs/InputFoodzUp.vue'
+// import FormMenu from '~/components/Forms/FormMenu.vue'
+import { IMenu, IArticle } from '~/store/interfaces'
+// import MenuStore from '~/store/menu'
+// import ArticleStore from '~/store/article'
+// import { Menu } from '~/store/menu/class'
 
-@Component({
-  components: { InputFoodzUp }
-})
+@Component({})
 export default class FormArticle extends Vue {
     @Prop({ required: true })
-    formMenu!: { type: string, name: string, description: string, price: number }
+    formMenu!: IMenu
 }
 </script>
 

@@ -7,8 +7,8 @@
 
       <ButtonFoodzUp :title="'Ajouter un menu'" class="mt-2 sm:mt-0 bg-primary text-white hover:bg-primary-80" @buttonClicked="toggleModal()" />
     </div>
-    <ListMenu :menus="menus" class="mt-24" />
-    <Modal :class="{'hidden': !modal}" @save="saveArticle()" @cancel="toggleModal()">
+    <ListMenu :menus="storeMenus" class="mt-24" />
+    <Modal :class="{'hidden': !modal}" :delete-button="false" @save="saveArticle()" @cancel="toggleModal()">
       <FormMenu :form-menu="formMenu" />
     </Modal>
   </div>
@@ -19,18 +19,19 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import ListMenu from '~/components/Lists/ListMenu.vue'
 import Modal from '~/components/Others/Modal.vue'
 import FormMenu from '~/components/Forms/FormMenu.vue'
+import { IMenu, IArticle } from '~/store/interfaces'
+import MenuStore from '~/store/menu'
+import ArticleStore from '~/store/article'
+import { Menu } from '~/store/menu/class'
 
 @Component({
   components: { ListMenu, Modal, FormMenu }
 })
-export default class Menu extends Vue {
+export default class MenuHome extends Vue {
     modal: boolean = false
-    formMenu: { type: string, name: string, description: string, price?: number } = {
-      type: '', name: '', description: ''
-    }
+    formMenu: IMenu = new Menu()
 
-    // TODO: need type
-    menus: Array<{ id: number, name: string, description?: string, articles?: Array<object>, price: number }> = [
+    menus: Array<IMenu> = [
       {
         id: 1,
         name: 'Menu best of',
@@ -38,7 +39,8 @@ export default class Menu extends Vue {
         articles: [
           { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
           { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-          { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }],
+          { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }
+        ],
         price: 10
       },
       {
@@ -48,7 +50,8 @@ export default class Menu extends Vue {
         articles: [
           { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
           { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-          { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }],
+          { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }
+        ],
         price: 13.50
       },
       {
@@ -58,29 +61,30 @@ export default class Menu extends Vue {
         articles: [
           { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
           { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-          { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }],
+          { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }
+        ],
         price: 23
       }
     ];
 
-    // TODO: need type
-        articles: Array<{ id: number, type: string, name: string, description?: string, price: number, tag?: string }> = [
-          { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
-          { id: 2, type: 'Entrée', name: 'Salade César', description: 'Servi sous format d\'entrée', price: 4.00 },
-          { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-          { id: 4, type: 'Plat', name: 'Pavé de saumon', description: 'Servi avec salade / purée maison pu riz', price: 17.20 },
-          { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 },
-          { id: 6, type: 'Boisson', name: 'Coca-cola', description: '1.25 L', price: 2.40 },
-          { id: 7, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50 },
-          { id: 8, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50 }
-        ];
+    get storeMenus (): Array<IMenu> {
+      return MenuStore.menus
+    }
+    
+    get storeArticles (): Array<IArticle> {
+      return ArticleStore.articles
+    }
 
-        toggleModal () {
-          this.modal = !this.modal
-        }
+    mounted () {
+      MenuStore.setMenus(this.menus)
+    }
 
-        saveMenu () {
-        }
+    toggleModal () {
+      this.modal = !this.modal
+    }
+
+    saveMenu () {
+    }
 }
 </script>
 
