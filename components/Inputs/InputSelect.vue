@@ -9,14 +9,13 @@
       </span>
       <select
         :id="variableDescription"
-        :key="index"
         :name="variableDescription"
         type="text"
         :class="{'pl-16': icon}"
         class="pl-5 text-lg w-full placeholder-gray-500 py-2 font-medium text-gray-800 bg-gray-200 rounded-full"
         :value="value"
       >
-        <option v-for="(option, index) in optionList" :key="index" value="">
+        <option v-for="(option, index) in optionList" :key="index" :value="option.name">
           {{ option.name }}
         </option>
       </select>

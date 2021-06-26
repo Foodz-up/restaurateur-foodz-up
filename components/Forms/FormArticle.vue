@@ -10,7 +10,7 @@
       v-model="formArticle.type"
       :value="formArticle.type"
       :variable-description="'Type d\'article'"
-      :input-variable="'type'"
+      :input-variable="formArticle.type"
       class=" mt-2"
       :option-list="optionList"
     />
@@ -46,8 +46,7 @@ export default class FormArticle extends Vue {
       { name: 'Entrée' },
       { name: 'Plat' },
       { name: 'Déssert' },
-      { name: 'Boisson' },
-      { name: 'Menu' }
+      { name: 'Boisson' }
     ]
 
     @Prop({ required: true })

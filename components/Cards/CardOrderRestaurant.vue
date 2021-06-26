@@ -3,7 +3,7 @@
     <img :src="require(`assets/img/${img}`)" class="object-cover w-1/3 mr-4">
     <div class="w-2/3">
       <h3 class="font-bold text-xl">
-        {{ orderNumber }}
+        Commandes N°{{ orderNumber }}
       </h3>
       <div class="flex">
         <p class="text-gray-500 text-lg">

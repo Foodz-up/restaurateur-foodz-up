@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row justify-between w-full">
-    <img :src="require(`assets/img/${img}`)" class="w-1/3 ml-3">
+    <img :src="require(`assets/img/${img}`)" class="w-1/3 mr-3 object-cover">
     <div class="w-2/3 grid">
       <div>
         <h3 class="font-bold">
@@ -9,18 +9,16 @@
         <p class="text-gray-500 text-sm">
           {{ description }}
         </p>
-        <div class="flex-rows items-center">
+        <div class="flex-row flex items-center">
           <p class="py-1 text-sm font-medium mr-2">
             {{ price }} €
           </p>
-          <ButtonFoodzUp :title="'Modifier'" class="mt-4 bg-primary text-white hover:bg-primary-80" />
-          <div v-if="tag" class="flex mt-auto">
-            <span class="w-auto text-sm font-semibold text-primary bg-primary-30 px-2 py-1 rounded-full">
-              {{ tag }}
-            </span>
-          </div>
+          <span v-if="tag" class="w-auto text-sm font-semibold text-primary bg-primary-15 px-2 py-1 rounded-full">
+            {{ tag }}
+          </span>
         </div>
       </div>
+      <ButtonFoodzUp :title="'Modifier'" class="w-24 mt-4 bg-primary text-white hover:bg-primary-80 self-end" @buttonClicked="askForUpdateCard()" />
     </div>
   </div>
 </template>
@@ -42,7 +40,7 @@ export default class CardArticleRestaurant extends Vue {
     @Prop()
     description!: string
 
-    @Prop({ default: 'LogoFoodzUp.png' })
+    @Prop({ default: 'noarticle.jpg' })
     img!: string
 
     @Prop({ required: true })
@@ -53,6 +51,9 @@ export default class CardArticleRestaurant extends Vue {
 
     @Prop()
     tag!: string
+
+    @Prop()
+    type!: string
 
     @Prop({ required: true })
     restaurantId!: number
@@ -67,9 +68,8 @@ export default class CardArticleRestaurant extends Vue {
       // TODO: remove article to cart
     }
 
-    addItemNumber () {
-      this.itemNumber += 1
-      // TODO: add article to cart
+    askForUpdateCard () {
+      this.$emit('needUpdateCard')
     }
 }
 </script>

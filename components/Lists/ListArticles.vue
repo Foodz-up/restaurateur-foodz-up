@@ -13,11 +13,16 @@
           :name="article.name"
           :price="article.price"
           :tag="article.tag"
+          :type="article.type"
           :menu-articles="article.menuArticles"
           :restaurant-id="restaurantId"
           class="pb-5 border-gray-100 border-b-2 sm:border-none sm:pb-0"
+          @needUpdateCard="openModal(article.id)"
         />
       </div>
+      <Modal :class="{'hidden': !modal}" @save="editArticle()" @cancel="closeModal()">
+        <FormArticle :form-article="formArticle" />
+      </Modal>
     </div>
   </div>
 </template>
@@ -25,9 +30,11 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import CardArticleRestaurant from '~/components/Cards/CardArticleRestaurant.vue'
+import Modal from '~/components/Others/Modal.vue'
+import FormArticle from '~/components/Forms/FormArticle.vue'
 
 @Component({
-  components: { CardArticleRestaurant }
+  components: { CardArticleRestaurant, Modal, FormArticle }
 })
 
 export default class ListArticles extends Vue {
@@ -37,6 +44,14 @@ export default class ListArticles extends Vue {
 
     @Prop({ required: true })
     restaurantId!: number
+
+    modal:boolean = false;
+
+    idSelectedArticle: number =0;
+
+    formArticle: { type: string, name: string, description: string, price?: number, tag?: string } = {
+      type: '', name: '', description: ''
+    }
 
     get splitedByType () {
       const newObject = this.articles.reduce(function (obj, value) {
@@ -50,6 +65,18 @@ export default class ListArticles extends Vue {
       }, {})
 
       return newObject
+    }
+
+    openModal (id: number) {
+      this.idSelectedArticle = id
+      const selectedArticle = this.articles.find(article => article.id === id)
+      this.formArticle = { ...this.formArticle, ...selectedArticle }
+      this.modal = true
+    }
+
+    closeModal () {
+      this.formArticle = {}
+      this.modal = false
     }
 }
 </script>
