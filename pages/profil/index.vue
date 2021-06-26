@@ -26,9 +26,7 @@
         A propos de FoodzUp
       </nuxt-link>
 
-      <button class="w-auto cursor-pointer text-red-pastel hover:underline font-medium" @click="logout()">
-        Se déconnecter
-      </button>
+      <ButtonLogOut />
     </div>
   </div>
 </template>
