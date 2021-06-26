@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="flex flex-col">
     <InputFoodzUp
       v-model="formMenu.name"
       :value="formMenu.name"
@@ -12,7 +12,7 @@
       :variable-description="'Description'"
       :input-variable="'address'"
       class="mt-2"
-      :placeholder="'Ex: Bon sandwich bien fourni'"
+      :placeholder="'Ex: Ceci est un menu'"
     />
     <InputFoodzUp
       v-model="formMenu.price"
@@ -22,14 +22,23 @@
       class="mt-2"
       :placeholder="'Ex: 5'"
     />
-    <InputSelect
-      v-model="formMenu.type"
-      :value="formMenu.type"
-      :variable-description="'Type de restaurant'"
-      :input-variable="'type'"
-      class=" mt-2"
-      :option-list="optionList"
-    />
+    <span v-if="!isformArticlesEmpty" class="mt-2 text-lg font-medium pl-2">Articles</span>
+    <div v-for="(article, index) in formMenu.articles" :key="index" class="flex items-end">
+      <InputSelectMenu
+        :key="article.id"
+        :value="article.id"
+        :variable-description="'Article ajouté'"
+        :input-variable="`type${index}`"
+        class="w-full mt-2"
+        :index="index"
+        :option-list="storeArticles"
+        @articleUpdate="articleUpdate"
+      />
+      <button class="ml-3 mb-2" @click="removeArticle(index)">
+        <SvgTrash width="20" class="text-red-pastel cursor-pointer" />
+      </button>
+    </div>
+    <ButtonFoodzUp class="mx-auto w-44 mt-4 bg-green-pastel text-white hover:bg-green-pastel-80" :title="'Ajouter un article'" @buttonClicked="addRandomArticleToMenu()" />
   </form>
 </template>
 
@@ -37,14 +46,38 @@
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 // import FormMenu from '~/components/Forms/FormMenu.vue'
 import { IMenu, IArticle } from '~/store/interfaces'
-// import MenuStore from '~/store/menu'
-// import ArticleStore from '~/store/article'
-// import { Menu } from '~/store/menu/class'
+import ArticleStore from '~/store/article'
+import SvgTrash from '~/components/Svg/SvgTrash.vue'
+import InputSelectMenu from '~/components/Inputs/InputSelectMenu.vue'
 
-@Component({})
+// TODO: ADD ARTICLE TO MENU
+
+@Component({
+  components: { SvgTrash, InputSelectMenu }
+})
 export default class FormArticle extends Vue {
     @Prop({ required: true })
     formMenu!: IMenu
+
+    get storeArticles (): Array<IArticle> {
+      return ArticleStore.articles
+    }
+
+    get isformArticlesEmpty (): boolean {
+      return this.formMenu.articles?.length === 0
+    }
+
+    addRandomArticleToMenu () {
+      this.$emit('addRandomArticleToMenu')
+    }
+
+    articleUpdate (e: { articleId: number, index: number }) {
+      this.$emit('addselectedArticleToMenu', e)
+    }
+
+    removeArticle (index: number) {
+      this.$emit('removeArticle', index)
+    }
 }
 </script>
 

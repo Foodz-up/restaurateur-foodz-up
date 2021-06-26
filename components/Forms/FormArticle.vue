@@ -51,10 +51,10 @@ import InputSelect from '~/components/Inputs/InputSelect.vue'
 })
 export default class FormArticle extends Vue {
     optionList: Array<object> = [
-      { name: 'Entrée' },
-      { name: 'Plat' },
-      { name: 'Déssert' },
-      { name: 'Boisson' }
+      { id: 1, name: 'Entrée' },
+      { id: 2, name: 'Plat' },
+      { id: 3, name: 'Déssert' },
+      { id: 4, name: 'Boisson' }
     ]
 
     @Prop({ required: true })

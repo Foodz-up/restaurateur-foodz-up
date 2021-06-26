@@ -13,7 +13,7 @@ export class Menu implements IMenu {
   id: number
   name: string
   description?: string
-  articles?: Array<IArticle>
+  articles: Array<IArticle>
   price: number
   tag: string
 }

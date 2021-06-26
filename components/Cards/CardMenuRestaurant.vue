@@ -18,7 +18,7 @@
               • {{ article.name }}
             </p>
           </div>
-          <ButtonFoodzUp :title="'Modifier'" class="mt-4 bg-primary text-white hover:bg-primary-80" />
+          <ButtonFoodzUp :title="'Modifier'" class="mt-4 bg-primary text-white hover:bg-primary-80" @buttonClicked="openModalRequested()" />
         </div>
       </div>
     </div>
@@ -50,6 +50,10 @@ export default class CardArticleRestaurant extends Vue {
 
     @Prop({ required: true })
     price!: number
+
+    openModalRequested () {
+      this.$emit('openModalRequested')
+    }
 }
 </script>
 
