@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="grid gap-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-      <CardEnseigne
-        v-for="enseigne in enseignes"
-        :id="enseigne.id"
-        :key="enseigne.id"
-        :name="enseigne.name"
-        :type="enseigne.type"
-        :avaibilities="enseigne.avaibilities"
-        :picture="enseigne.picture"
-        :address="enseigne.address"
+      <CardOwnRestaurant
+        v-for="restaurant in restaurants"
+        :id="restaurant.id"
+        :key="restaurant.id"
+        :name="restaurant.name"
+        :type="restaurant.type"
+        :avaibilities="restaurant.avaibilities"
+        :picture="restaurant.picture"
+        :address="restaurant.address"
         class="pb-5 border-gray-100 border-b-2 sm:border-none sm:pb-0 w-auto"
       />
     </div>
@@ -18,16 +18,16 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
-import CardEnseigne from '~/components/Cards/CardEnseigne.vue'
+import CardRestaurant from '~/components/Cards/CardOwnRestaurant.vue'
 
 @Component({
-  components: { CardEnseigne }
+  components: { CardRestaurant }
 })
 
-export default class ListEnseigne extends Vue {
+export default class ListRestaurant extends Vue {
     // TODO: need type
     @Prop({ required: true })
-    enseignes!: Array<
+    restaurants!: Array<
     { id: number, name: string, type: string, avaibilities: [], picture: string, address: string }
     |
     { id: number, name: string, type: string, avaibilities: [], picture: string, address: string }

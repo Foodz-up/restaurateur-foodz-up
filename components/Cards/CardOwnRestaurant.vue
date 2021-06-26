@@ -30,7 +30,7 @@ import ButtonFoodzUp from '~/components/Buttons/ButtonFoodzUp.vue'
 @Component({
   components: { ButtonFoodzUp }
 })
-export default class CardEnseigne extends Vue {
+export default class CardOwnRestaurant extends Vue {
     @Prop({ required: true })
     id!: number
 

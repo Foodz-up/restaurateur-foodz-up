@@ -1,22 +1,22 @@
 <template>
   <form>
     <InputFoodzUp
-      v-model="formEnseigne.name"
-      :value="formEnseigne.name"
+      v-model="formRestaurant.name"
+      :value="formRestaurant.name"
       :variable-description="'Nom du restaurant'"
       :placeholder="'Ex: Au burger qui rit'"
     />
     <InputSelect
-      v-model="formEnseigne.type"
-      :value="formEnseigne.type"
+      v-model="formRestaurant.type"
+      :value="formRestaurant.type"
       :variable-description="'Type de restaurant'"
       :input-variable="'type'"
       class=" mt-2"
       :option-list="optionList"
     />
     <InputFoodzUp
-      v-model="formEnseigne.address"
-      :value="formEnseigne.address"
+      v-model="formRestaurant.address"
+      :value="formRestaurant.address"
       :variable-description="'adresse du restaurant'"
       :input-variable="'address'"
       class="mt-2"
@@ -24,32 +24,32 @@
     />
     <div class="flex mt-2">
       <InputFoodzUp
-        v-model="formEnseigne.address"
-        :value="formEnseigne.address"
+        v-model="formRestaurant.address"
+        :value="formRestaurant.address"
         :variable-description="'adresse du restaurant'"
         :input-variable="'address'"
         class="mx-2"
         :placeholder="'Ex: 8h'"
       />
       <InputFoodzUp
-        v-model="formEnseigne.address"
-        :value="formEnseigne.address"
+        v-model="formRestaurant.address"
+        :value="formRestaurant.address"
         :variable-description="'adresse du restaurant'"
         :input-variable="'address'"
         class="mx-2"
         :placeholder="'Ex: 8h'"
       />
       <InputFoodzUp
-        v-model="formEnseigne.address"
-        :value="formEnseigne.address"
+        v-model="formRestaurant.address"
+        :value="formRestaurant.address"
         :variable-description="'adresse du restaurant'"
         :input-variable="'address'"
         class="mx-2"
         :placeholder="'Ex: 8h'"
       />
       <InputFoodzUp
-        v-model="formEnseigne.address"
-        :value="formEnseigne.address"
+        v-model="formRestaurant.address"
+        :value="formRestaurant.address"
         :variable-description="'adresse du restaurant'"
         :input-variable="'address'"
         class="mx-2"
@@ -67,14 +67,14 @@ import InputSelect from '~/components/Inputs/InputSelect.vue'
 @Component({
   components: { InputFoodzUp, InputSelect }
 })
-export default class FormEnseigne extends Vue {
+export default class FormRestaurant extends Vue {
     optionList: Array<object> = [
       { name: 'Fastfood' },
       { name: 'Gastronomique' }
     ]
 
     @Prop({ required: true })
-    formEnseigne!: { name: string, type: string, avaibilities: [], address: string }
+    formRestaurant!: { name: string, type: string, avaibilities: [], address: string }
 }
 </script>
 

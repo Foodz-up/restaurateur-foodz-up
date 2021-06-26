@@ -23,7 +23,7 @@ import FormMenu from '~/components/Forms/FormMenu.vue'
 @Component({
   components: { ListMenu, Modal, FormMenu }
 })
-export default class Enseignes extends Vue {
+export default class Menu extends Vue {
     modal: boolean = false
     formMenu: { type: string, name: string, description: string, price?: number } = {
       type: '', name: '', description: ''

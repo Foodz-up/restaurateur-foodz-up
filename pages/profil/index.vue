@@ -44,10 +44,10 @@ export default class Profile extends Vue {
   items: Array<{ icon: string, route: string, title: string, description: string }> = [
     { icon: 'covid', route: '/profil/covid', title: 'Covid-19', description: '' },
     { icon: 'sponsor', route: '/profil/parrainage', title: 'Pairrainage', description: 'Récuperz votre code parainage' },
-    { icon: 'help', route: '/profil/Aide', title: 'Aide', description: '' },
+    { icon: 'help', route: '/profil/aide', title: 'Aide', description: '' },
     { icon: 'deliver', route: '/profil/livreur', title: 'Devenez livreur', description: 'Inscivez-vous en quelques minutes' },
     { icon: 'setting', route: '/profil/reglages', title: 'Informations du compte', description: '' },
-    { icon: 'store', route: '/profil/store', title: 'Gestion des enseignes', description: '' }
+    { icon: 'store', route: '/profil/restaurant', title: 'Informations du restaurant', description: '' }
   ]
 
   // TODO: logout function
