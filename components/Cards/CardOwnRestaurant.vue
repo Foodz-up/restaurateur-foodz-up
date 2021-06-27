@@ -1,23 +1,30 @@
 <template>
-  <div class="flex flex-row justify-between w-full">
-    <img :src="require(`assets/img/${picture}`)" class="object-contain w-1/3 mr-4">
-    <div class="w-2/3">
-      <h3 class="font-bold text-xl">
+  <div class="flex flex-col sm:flex-row justify-center item-centers max-w-2xl">
+    <img :src="require(`assets/img/${picture}`)" class="object-contain w-f1/2 sm:w-1/3 sm:mr-4 mx-auto">
+    <div class="w-full sm:w-2/3 flex flex-col items-center justify-center sm:justify-start">
+      <h3 class="text-center sm:text-left font-bold text-xl">
         {{ name }}
       </h3>
-      <p class="text-gray-500 text-lg">
+      <p class="text-center sm:text-left text-gray-500 text-lg">
         {{ type }}
       </p>
-      <p class="text-lg text-gray-500 font-medium">
+      <p class="text-center sm:text-left text-lg text-gray-500 font-medium mb-4">
         {{ address }}
       </p>
-      <div v-for="(avaibilitie, index) in avaibilities" :key="index">
-        <p class="text-sm text-gray-500 font-medium">
-          {{ avaibilitie.day }} : {{ avaibilitie.startTime }}h - {{ avaibilitie.endTime }}h
-        </p>
+      <div>
+        <div v-for="(day, key, indexDay) in avaibilities" :key="indexDay" class="flex">
+          <span class="font-medium w-24">{{ key }} :</span>
+          <p class="ml-2">
+            {{ day.mStart }} - {{ day.mEnd }}
+          </p>
+          <span class="mx-4 text-lg font-bold text-gray-500">
+            -
+          </span>
+          <p>{{ day.aStart }} - {{ day.aEnd }}</p>
+        </div>
       </div>
       <div class="flex mt-2">
-        <ButtonFoodzUp :title="'Modifier'" class="mt-4 bg-primary text-white hover:bg-primary-80" />
+        <ButtonFoodzUp :title="'Modifier'" class="mt-4 bg-primary text-white hover:bg-primary-80" @buttonClicked="openModalRequested()" />
       </div>
     </div>
   </div>
@@ -48,6 +55,10 @@ export default class CardOwnRestaurant extends Vue {
 
     @Prop({ default: '' })
     address!: string
+
+    openModalRequested () {
+      this.$emit('openModalRequested')
+    }
 }
 </script>
 

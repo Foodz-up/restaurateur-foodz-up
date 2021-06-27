@@ -1,6 +1,6 @@
 <template>
   <div class="m-4">
-    <h1 class="mt-1 text-4xl font-medium">
+    <h1 class="text-center sm:text-left mt-1 text-4xl font-medium">
       Covid-19
     </h1>
 

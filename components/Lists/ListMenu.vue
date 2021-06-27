@@ -74,7 +74,7 @@ export default class ListMenu extends Vue {
       this.formMenu.articles[addedArticleIdAndIndex.index] = ArticleStore.articles[articleIndex]
     }
 
-    // TODO: there is a probleme by removing an article, the page automatically reload
+    // BUG: there is a probleme by removing an article, the page automatically reload
     removeArticle (index: number) {
       this.formMenu.articles.splice(index, 1)
     }

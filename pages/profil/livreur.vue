@@ -1,6 +1,6 @@
 <template>
   <div class="m-4">
-    <h1 class="mt-1 text-4xl font-medium">
+    <h1 class="text-center sm:text-lef tmt-1 text-4xl font-medium">
       Devenez livreur
     </h1>
 
