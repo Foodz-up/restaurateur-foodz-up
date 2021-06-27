@@ -19,19 +19,15 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import CardRestaurant from '~/components/Cards/CardOwnRestaurant.vue'
+import { IRestaurant } from '~/store/interfaces'
 
 @Component({
   components: { CardRestaurant }
 })
 
 export default class ListRestaurant extends Vue {
-    // TODO: need type
     @Prop({ required: true })
-    restaurants!: Array<
-    { id: number, name: string, type: string, avaibilities: [], picture: string, address: string }
-    |
-    { id: number, name: string, type: string, avaibilities: [], picture: string, address: string }
-    >
+    restaurants!: Array<IRestaurant>
 }
 </script>
 

@@ -58,7 +58,6 @@ export default class FormPasswordChange extends Vue {
     confirmPassword: string;
   };
 
-  // TODO: Update password
   async updatePassword () {
     try {
       const res = await AuthStore.changePassword(this.password)

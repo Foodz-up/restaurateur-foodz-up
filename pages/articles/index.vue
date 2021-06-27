@@ -40,7 +40,6 @@ export default class Articles extends Vue {
     componentListArticleKey: number = 0
     formArticle: IArticle = new Article()
 
-    // TODO: need type
     articles: Array<IArticle> = [
       { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
       { id: 2, type: 'Entrée', name: 'Salade César', description: 'Servi sous format d\'entrée', price: 4.00 },
