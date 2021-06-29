@@ -1,23 +1,36 @@
 <template>
   <div>
-    <Sidebar />
-    <Nuxt />
+    <Sidebar class="z-30 sticky top-0 left-0" />
+    <Nuxt class="my-10 custom-layout-height mx-4" />
     <Footer />
+    <ListNotifications class="fixed bottom-0 right-0 z-50" />
   </div>
 </template>
 
 <script>
 import Sidebar from '~/components/Navigation/Sidebar.vue'
 import Footer from '~/components/Navigation/Footer.vue'
+import ListNotifications from '~/components/Lists/ListNotifications.vue'
+import AuthStore from '~/store/auth'
 
 export default {
-  components: { Sidebar, Footer }
+  components: { Sidebar, Footer, ListNotifications },
+  mounted () {
+    if (this.$auth.$state['access_token.local']) {
+      AuthStore.setBearer(this.$auth.$state['access_token.local'].split('Bearer ')[1])
+    }
+  }
 }
 </script>
 
 <style>
+.custom-layout-height{
+  min-height: calc(100vh - 260px)
+}
+
 html {
   font-family:
+  'Montserrat',
     'Source Sans Pro',
     -apple-system,
     BlinkMacSystemFont,
@@ -69,5 +82,21 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.max-w-300px {
+  max-width: 300px;
+}
+
+*, button {
+  outline: none!important;
 }
 </style>

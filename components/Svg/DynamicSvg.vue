@@ -9,11 +9,6 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
 
 @Component({
   components: {
-    /*
-      Importer tous les composants Strapi
-    */
-
-    // Titles
     profile: () => import('~/components/Svg/SvgProfile.vue'),
     card: () => import('~/components/Svg/SvgCard.vue'),
     covid: () => import('~/components/Svg/SvgCovid.vue'),
@@ -37,7 +32,8 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator'
     biking: () => import('~/components/Svg/SvgBiking.vue'),
     calendar: () => import('~/components/Svg/SvgCalendar.vue'),
     search: () => import('~/components/Svg/SvgSearch.vue'),
-    store: () => import('~/components/Svg/SvgStore.vue')
+    store: () => import('~/components/Svg/SvgStore.vue'),
+    trash: () => import('~/components/Svg/SvgTrash.vue')
   }
 })
 export default class DynamicSvg extends Vue {
