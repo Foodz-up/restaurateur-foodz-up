@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-row justify-between w-full">
-    <img :src="require(`assets/img/${img}`)" class="object-cover w-1/3 mr-4">
+    <img :src="require(`assets/img/${picture}`)" class="object-cover w-1/3 mr-4">
     <div class="w-2/3">
       <h3 class="font-bold text-xl">
-        Commandes N°{{ orderNumber }}
+        Commandes N°{{ id }}
       </h3>
       <div class="flex">
         <p class="text-gray-500 text-lg">
@@ -16,14 +16,11 @@
           {{ price }} €
         </p>
       </div>
-      <div class="flex">
+      <div class="flex flex-col">
         <p class="text-lg text-gray-500">
           {{ dateFormat(date) }}
         </p>
-        <span class="mx-1 text-lg font-bold text-gray-500">
-          •
-        </span>
-        <p class="text-lg text-gray-500">
+        <p class="text-lg text-gray-800 font-medium underline">
           {{ status }}
         </p>
       </div>
@@ -38,6 +35,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
+import { IArticle, IMenu, IRestaurant } from '~/store/interfaces'
 
 @Component
 export default class CardOrderRestaurant extends Vue {
@@ -45,13 +43,13 @@ export default class CardOrderRestaurant extends Vue {
     id!: number
 
     @Prop({ default: 'Sans nom' })
-    orderNumber!: number
+    restaurant!: IRestaurant
 
     @Prop({ default: Date.now() })
     date!: Date
 
-    @Prop({ default: 'LogoFoodzUp.png' })
-    img!: string
+    @Prop({ default: 'noshop.jpg' })
+    picture!: string
 
     @Prop({ required: true })
     price!: number
@@ -60,7 +58,7 @@ export default class CardOrderRestaurant extends Vue {
     itemsNumber!: number
 
     @Prop({ required: true })
-    restaurantId!: number
+    items!: Array<IMenu | IArticle>
 
     @Prop()
     status!: 'Passée' | 'En cours'
