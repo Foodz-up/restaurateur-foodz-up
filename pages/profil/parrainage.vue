@@ -124,8 +124,6 @@ export default class ProfileSponsor extends Vue {
     const caracToUse = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-+!*ù$'
     const code: string = Array(10).fill(caracToUse).map(function (x) { return x[Math.floor(Math.random() * x.length)] }).join('')
 
-    // TODO: store that new code in database
-
     try {
       const response = await AuthStore.generateSponsorCode(code)
       NotificationStore.addNotification({
