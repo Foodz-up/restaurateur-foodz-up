@@ -47,24 +47,7 @@ export default class RestaurantProfil extends Vue {
     modal: boolean = false
     formRestaurant: IRestaurant = new Restaurant()
 
-    restaurant: IRestaurant = {
-      id: 1,
-      name: 'Macdo',
-      type: 'Fastfood',
-      timetable: {
-        lundi: { mStart: '11:00', mEnd: '15:00', aStart: '18:00', aEnd: '00:00' },
-        mardi: { mStart: '10:00', mEnd: '15:00', aStart: '18:00', aEnd: '00:00' },
-        mercredi: { mStart: '10:00', mEnd: '15:00', aStart: '18:00', aEnd: '00:00' },
-        jeudi: { mStart: '10:00', mEnd: '15:00', aStart: '18:00', aEnd: '00:00' },
-        vendredi: { mStart: '10:00', mEnd: '15:00', aStart: '18:00', aEnd: '00:00' },
-        samedi: { mStart: '10:00', mEnd: '15:00', aStart: '18:00', aEnd: '00:00' },
-        dimanche: { mStart: '12:00', mEnd: '15:00', aStart: '18:00', aEnd: '00:00' }
-      },
-      picture: 'LogoFoodzUp.png',
-      address: '12 rue du 12 décembre 1212'
-    }
-
-    get storeRestaurant (): IRestaurant {
+    get storeRestaurant (): IRestaurant | null {
       return RestaurantStore.restaurant
     }
 
@@ -73,7 +56,7 @@ export default class RestaurantProfil extends Vue {
     }
 
     mounted () {
-      RestaurantStore.setRestaurant(this.restaurant)
+      RestaurantStore.getRestaurant()
     }
 
     deleteRestaurant () {
@@ -86,7 +69,7 @@ export default class RestaurantProfil extends Vue {
       if (this.storeRestaurant) {
         RestaurantStore.updateRestaurant(this.formRestaurant)
       } else {
-        RestaurantStore.setRestaurant(this.formRestaurant)
+        RestaurantStore.addRestaurant(this.formRestaurant)
       }
       this.closeModal()
       this.formRestaurant = new Restaurant()

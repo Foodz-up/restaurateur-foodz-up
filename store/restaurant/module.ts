@@ -5,19 +5,19 @@ export const RestaurantStoreModule = {
   namespaced: false,
   state: () => ({ ...new RestaurantState() }),
   getters: {
-    restaurants (state: RestaurantState): Array<IRestaurant> {
-      return state.restaurants
+    restaurant (state: RestaurantState): IRestaurant | null {
+      return state.restaurant
     }
   },
   mutations: {
-    setRestaurants (state: RestaurantState, restaurants: Array<IRestaurant>) {
-      state.restaurants = restaurants
+    setRestaurant (state: RestaurantState, restaurant: IRestaurant | null) {
+      state.restaurant = restaurant
     },
-    addRestaurant (state: RestaurantState, restaurant: IRestaurant) {
-      state.restaurants = [...state.restaurants, restaurant]
-    },
-    addRestaurants (state: RestaurantState, restaurants: Array<IRestaurant>) {
-      state.restaurants = [...state.restaurants, ...restaurants]
+    updateRestaurant (state: RestaurantState, restaurant: IRestaurant) {
+      state.restaurant = {
+        ...state.restaurant,
+        ...restaurant
+      }
     }
   }
 }

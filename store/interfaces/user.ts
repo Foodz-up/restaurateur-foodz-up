@@ -4,7 +4,7 @@ export interface IUser {
   cityCode: number
   firstName: string
   lastName: string
-  profilePicture: string
+  picture: string
   refreshToken: string
   refreshTokenExpires: string
   role: number

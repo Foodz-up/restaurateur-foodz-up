@@ -6,7 +6,6 @@ export enum ETypeRestaurant {
 }
 
 export interface IRestaurant {
-    id: number
     name: string
     type: ETypeRestaurant
     menus?: Array<IMenu>
@@ -22,7 +21,7 @@ export interface IRestaurant {
     },
     picture?: string
     address?: string
-    editor?: Array<string>
+    editor?: number
     waiting?: number
     note?: number
 }

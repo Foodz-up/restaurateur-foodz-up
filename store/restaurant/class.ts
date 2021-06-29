@@ -1,8 +1,7 @@
 import { ETypeRestaurant, IArticle, IMenu, IRestaurant } from '~/store/interfaces'
-
+import AuthStore from '~/store/auth'
 export class Restaurant implements IRestaurant {
   constructor () {
-    this.id = 0
     this.name = ''
     this.type = ETypeRestaurant.GASTRO
     this.menus = []
@@ -18,12 +17,11 @@ export class Restaurant implements IRestaurant {
     }
     this.picture = 'noshop.jpg'
     this.address = ''
-    this.editor = []
+    this.editor = AuthStore.user.id
     this.note = 0
     this.waiting = 10
   }
 
-  id: number
   name: string
   note: number
   waiting: number
@@ -42,5 +40,5 @@ export class Restaurant implements IRestaurant {
 
   picture: string
   address: string
-  editor: string[]
+  editor: number
 }

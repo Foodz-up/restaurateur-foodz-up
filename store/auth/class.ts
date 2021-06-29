@@ -7,7 +7,7 @@ export class User implements IUser {
     this.cityCode = 62000
     this.firstName = ''
     this.lastName = ''
-    this.profilePicture = ''
+    this.picture = ''
     this.refreshToken = ''
     this.refreshTokenExpires = ''
     this.role = 0
@@ -15,11 +15,11 @@ export class User implements IUser {
     this.address = '7 rue Diderot, 62000 Arras'
   }
 
+    picture: string
     address: string
     cityCode: number
     firstName: string
     lastName: string
-    profilePicture: string
     refreshToken: string
     refreshTokenExpires: string
     role: number

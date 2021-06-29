@@ -1,5 +1,5 @@
 import { IRestaurant } from '~/store/interfaces'
 
 export class RestaurantState {
-  restaurants: Array<IRestaurant> = []
+  restaurant: IRestaurant | null = null
 }
