@@ -8,20 +8,21 @@ class RestaurantStore extends BaseStoreService<RestaurantState> {
   public mutations = RestaurantStoreModule.mutations
   public getters = RestaurantStoreModule.getters
 
-  get restaurant (): IRestaurant {
-    return this.read<any>(this.getters.restaurant)
+  get restaurants (): Array<IRestaurant> {
+    return this.read<any>(this.getters.restaurants)
   }
 
-  setRestaurant (restaurant: IRestaurant) {
-    this.commit(this.mutations.setRestaurant, restaurant)
+  setRestaurants (restaurants: Array<IRestaurant>) {
+    this.commit(this.mutations.setRestaurants, restaurants)
   }
 
-  updateRestaurant (restaurant: IRestaurant) {
-    this.commit(this.mutations.setRestaurant, restaurant)
+  getRestaurant (idRestaurant: number) {
+    return this.restaurants.find(restaurant => restaurant.id === idRestaurant)
   }
 
-  deleteRestaurant () {
-    this.commit(this.mutations.deleteRestaurant, this.restaurant)
+  getMenuFromRestaurant (idMenu: number, idRestaurant: number) {
+    const restaurant = this.restaurants.find(restaurant => restaurant.id === idRestaurant)
+    return restaurant?.menus?.find(menu => menu.id === idMenu)
   }
 }
 export default new RestaurantStore()

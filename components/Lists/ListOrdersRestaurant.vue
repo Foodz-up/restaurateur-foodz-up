@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="(orderArrayByStatus, index) in splitedByStatus" :key="index" class="w-full px-4">
-      <h2 class="text-3xl font-semibold mt-24 mb-8 text-primary">
+      <h2 class="text-3xl font-semibold mt-24 mb-8 text-yellow-pastel">
         {{ orderArrayByStatus[0].status }}
       </h2>
       <div class="grid gap-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
@@ -9,11 +9,11 @@
           v-for="order in orderArrayByStatus"
           :id="order.id"
           :key="order.id"
-          :order-number="order.orderNumber"
+          :restaurant="order.restaurant"
           :status="order.status"
           :price="order.price"
-          :items-number="order.itemsNumber"
-          :restaurant-id="order.restaurantID"
+          :items-number="orderItemLength(order.items)"
+          :items="order.items"
           class="pb-5 border-gray-100 border-b-2 sm:border-none sm:pb-0 w-auto"
         />
       </div>
@@ -24,19 +24,16 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import CardOrderRestaurant from '~/components/Cards/CardOrderRestaurant.vue'
+import { IOrder, IMenu, IArticle } from '~/store/interfaces'
 
 @Component({
   components: { CardOrderRestaurant }
 })
 
-export default class ListOrdersRestaurant extends Vue {
+export default class ListOrders extends Vue {
     // TODO: need type
     @Prop({ required: true })
-    orders!: Array<
-    { id: number, orderNumber: string, price: number, status: string, date: Date, itemsNumber: number, restaurantId: number }
-    |
-    { id: number, orderNumber: string, price: number, status: string, date: Date, itemsNumber: number, restaurantId: number }
-    >
+    orders!: Array<IOrder>
 
     get splitedByStatus () {
       const newObject = this.orders.reduce(function (obj, value) {
@@ -50,6 +47,10 @@ export default class ListOrdersRestaurant extends Vue {
       }, {})
 
       return newObject
+    }
+
+    orderItemLength (items: Array<IMenu | IArticle>):number {
+      return items.length
     }
 }
 </script>

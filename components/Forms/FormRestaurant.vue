@@ -388,9 +388,9 @@ export default class FormRestaurant extends Vue {
     // TODO: fix the reload bug and set the variable to false
     showTimeTable: boolean = true
 
-    get rotate180 () {
+    /* get rotate180 () {
       return this.showTimeTable === true ? 'transform rotate-180' : ''
-    }
+    } */
 
     toggleTimeTable () {
       this.showTimeTable = !this.showTimeTable
