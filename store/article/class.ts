@@ -12,7 +12,7 @@ export class Article implements IArticle {
     this.picture = 'noarticle.jpg'
   }
 
-  _id: object
+  _id?: object
   id: number
   type: string
   name: string

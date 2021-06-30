@@ -37,64 +37,12 @@ export default class MenuHome extends Vue {
   modal: boolean = false
   formMenu: IMenu = new Menu()
 
-  menus: Array<IMenu> = [
-    {
-      id: 1,
-      name: 'Menu best of',
-      description: 'Menu classique',
-      articles: [
-        { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
-        { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-        { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }
-      ],
-      price: 10
-    },
-    {
-      id: 2,
-      name: 'Menu maxi best of',
-      description: 'Grand menu classique',
-      articles: [
-        { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
-        { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-        { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }
-      ],
-      price: 13.50
-    },
-    {
-      id: 3,
-      name: 'Menu duo',
-      description: 'Grand menu classique pour deux',
-      articles: [
-        { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
-        { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-        { id: 5, type: 'Désert', name: 'Tiramisu', price: 6.30 }
-      ],
-      price: 23
-    }
-  ];
-
-  articles: Array<IArticle> = [
-    { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
-    { id: 2, type: 'Entrée', name: 'Salade César', description: 'Servi sous format d\'entrée', price: 4.00 },
-    { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-    { id: 4, type: 'Plat', name: 'Pavé de saumon', description: 'Servi avec salade / purée maison pu riz', price: 17.20 },
-    { id: 5, type: 'Déssert', name: 'Tiramisu', price: 6.30 },
-    { id: 6, type: 'Boisson', name: 'Coca-cola', description: '1.25 L', price: 2.40 },
-    { id: 7, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50 },
-    { id: 8, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50 }
-  ];
-
   get storeMenus (): Array<IMenu> {
     return MenuStore.menus
   }
 
   get storeArticles (): Array<IArticle> {
     return ArticleStore.articles
-  }
-
-  mounted () {
-    ArticleStore.setArticles(this.articles)
-    MenuStore.setMenus(this.menus)
   }
 
   openModal () {

@@ -6,6 +6,7 @@ import { IRestaurant } from '~/store/interfaces/'
 import axios from '~/plugins/axios'
 import NotificationStore from '~/store/notification'
 import ArticleStore from '~/store/article'
+import MenuStore from '~/store/menu'
 
 class RestaurantStore extends BaseStoreService<RestaurantState> {
   public mutations = RestaurantStoreModule.mutations
@@ -25,6 +26,7 @@ class RestaurantStore extends BaseStoreService<RestaurantState> {
       if (restaurant.status === 200) {
         this.setRestaurant(restaurant.data.restaurant)
         ArticleStore.setArticles(restaurant.data.restaurant.articles)
+        MenuStore.setMenus(restaurant.data.restaurant.menus)
       }
     } catch (error: any) {
       NotificationStore.addNotification({ message: error.response.data.message, status: error.response.status })
