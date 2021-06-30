@@ -6,12 +6,12 @@
 
     <hr class="mt-4 mb-12">
 
-    <div class="grid grid-cols-1 xl:grid-cols-2 justify-items-center">
-      <SellMenu />
-      <MoneyDay />
+    <div class="grid grid-cols-1 justify-items-center bg-primary-15">
+      <SellMenu class="rounded-xl p-2 shadow-lg my-6" />
+      <MoneyDay class="rounded-xl p-2 shadow-lg mb-6" />
     </div>
-    <div class="grid justify-items-center">
-      <OrderMonth />
+    <div class="grid justify-items-center bg-primary-15">
+      <OrderMonth class="rounded-xl p-2 shadow-lg mb-6" />
     </div>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <template>
-  <div id="chart-container">
+  <div id="chart-container" class="bg-white">
     <fusioncharts
+
       :type="type"
       :width="width"
       :height="height"
