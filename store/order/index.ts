@@ -13,8 +13,8 @@ class OrderStore extends BaseStoreService<OrderState> {
     return this.read<any>(this.getters.orders)
   }
 
-  getOrder (idOrder: number): IOrder | undefined {
-    return this.orders.find(order => order.id === idOrder)
+  getOrder (idOrder: string): IOrder | undefined {
+    return this.orders.find(order => order._id === idOrder)
   }
 
   async getOrders () {
@@ -23,7 +23,8 @@ class OrderStore extends BaseStoreService<OrderState> {
       console.log({ orders })
 
       if (orders.status === 200 && orders.data.orders.length > 0) {
-        this.setOrders(orders.data.orders)
+        this.addOrders(orders.data.orders)
+        console.log({ storeOrder: this.orders })
       }
     } catch (error: any) {
       NotificationStore.addNotification({ message: error.response.data.message, status: error.response.status })
@@ -34,12 +35,26 @@ class OrderStore extends BaseStoreService<OrderState> {
     this.commit(this.mutations.setOrders, orders)
   }
 
+  addOrders (orders: Array<IOrder>) {
+    this.commit(this.mutations.addOrders, orders)
+  }
+
   addOrder (order: IOrder) {
     this.commit(this.mutations.addOrder, order)
   }
 
-  updateOrder (orderId: number, status: EOrderState) {
-    this.commit(this.mutations.updateOrder, { orderId, status })
+  async updateOrder (orderId: object, status: EOrderState) {
+    try {
+      const order = await axios().patch('orders/me/update', { orderId, status })
+      console.log({ order })
+
+      if (order.status === 200) {
+        this.commit(this.mutations.updateOrder, { orderId: order.data.order._id, status: order.data.order.status })
+      }
+    } catch (error: any) {
+      console.log({ error })
+      NotificationStore.addNotification({ message: error.response.data.message, status: error.response.status })
+    }
   }
 }
 export default new OrderStore()

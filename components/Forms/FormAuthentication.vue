@@ -73,8 +73,6 @@ export default {
           status: response.status
         })
 
-        RestaurantStore.getRestaurants()
-
         this.$router.push('/commandes')
       } catch (error) {
         NotificationStore.addNotification({

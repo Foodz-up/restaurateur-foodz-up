@@ -1,17 +1,14 @@
 <template>
   <div class="flex flex-row justify-between w-full">
-    <img :src="require(`assets/img/${picture}`)" class="object-cover w-1/3 mr-4">
-    <div class="w-2/3">
-      <h3 class="font-bold text-xl">
-        Commandes N°{{ id }}
+    <img :src="require(`assets/img/${picture}`)" class="object-cover w-1/3 rounded-l-xl">
+    <div class="w-2/3 p-4">
+      <h3 class="font-bold text-xl custom-ellipsis">
+        {{ id }}
       </h3>
-      <div class="flex">
-        <p class="text-gray-500 text-lg">
+      <div class="flex flex-col">
+        <p class="text-gray-500 text-lg font-medium">
           {{ itemsNumber }} élément(s)
         </p>
-        <span class="mx-1 text-lg font-bold text-gray-500">
-          •
-        </span>
         <p class="text-lg text-gray-500 font-medium">
           {{ price }} €
         </p>
@@ -26,7 +23,7 @@
       </div>
       <div class="flex mt-2">
         <nuxt-link :to="`/commandes/${id}`" class="text-lg py-1 px-2 rounded-full font-medium text-primary bg-primary-15">
-          Voir la commande
+          Voir plus
         </nuxt-link>
       </div>
     </div>
@@ -77,5 +74,10 @@ export default class CardOrderRestaurant extends Vue {
 </script>
 
 <style scoped>
-
+.custom-ellipsis {
+    width: 6.5em; /* the element needs a fixed width (in px, em, %, etc) */
+  overflow: hidden; /* make sure it hides the content that overflows */
+  white-space: nowrap; /* don't break the line */
+  text-overflow: ellipsis; /* give the beautiful '...' effect */
+}
 </style>

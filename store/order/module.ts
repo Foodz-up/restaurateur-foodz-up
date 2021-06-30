@@ -13,12 +13,16 @@ export const OrderStoreModule = {
     setOrders (state: OrderState, orders: Array<IOrder>) {
       state.orders = orders
     },
-
     addOrder (state: OrderState, order: IOrder) {
       state.orders = [...state.orders, order]
     },
-    updateOrder (state: OrderState, payload:{orderId: number, status: EOrderState}) {
-      const orderSelected = state.orders.findIndex(order => order.id === payload.orderId)
+    addOrders (state: OrderState, orders: Array<IOrder>) {
+      state.orders = [...state.orders, ...orders]
+    },
+    updateOrder (state: OrderState, payload: { orderId: object, status: EOrderState }) {
+      
+      const orderSelected = state.orders.findIndex(order => order._id === payload.orderId)
+      console.log({ payload, os: state.orders, orderSelected })
       state.orders[orderSelected].status = payload.status
     }
   }

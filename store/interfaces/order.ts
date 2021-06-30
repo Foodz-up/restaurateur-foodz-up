@@ -10,6 +10,7 @@ export enum EOrderState {
 }
 
 export interface IOrder {
+    _id?: object
     id: number
     price: number
     items: Array<IArticle | IMenu>
