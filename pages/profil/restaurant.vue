@@ -56,7 +56,7 @@ export default class RestaurantProfil extends Vue {
     }
 
     mounted () {
-      RestaurantStore.getRestaurant()
+      RestaurantStore.getRestaurants()
     }
 
     deleteRestaurant () {

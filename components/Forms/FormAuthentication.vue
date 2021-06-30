@@ -71,7 +71,7 @@ export default {
           status: response.status
         })
 
-        RestaurantStore.getRestaurant()
+        RestaurantStore.getRestaurants()
 
         this.$router.push('/commandes')
       } catch (error) {

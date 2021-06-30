@@ -20,7 +20,7 @@ class RestaurantStore extends BaseStoreService<RestaurantState> {
     this.commit(this.mutations.setRestaurant, restaurant)
   }
 
-  async getRestaurant () {
+  async getRestaurants () {
     try {
       const restaurant = await axios().get('/restaurants/me')
       if (restaurant.status === 200) {
