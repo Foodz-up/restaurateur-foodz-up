@@ -1,14 +1,10 @@
 <template>
   <div>
     <h1 class="text-center sm:text-left mt-1 text-4xl font-medium">
-      Aide
+      Politique de confidentialité
     </h1>
 
     <hr class="mt-4 mb-12">
-    <div>
-      <span>Pour toutes demandes veuillez contacter : </span>
-      <a href="mailto:thomas.clement@viacesi.fr" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">thomas.clement@viacesi.fr</a>
-    </div>
     <LoremFoodzUp />
   </div>
 </template>
@@ -19,7 +15,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 @Component({
   components: { }
 })
-export default class ProfileHelp extends Vue {
+export default class ProfileCovid extends Vue {
 
 }
 </script>
