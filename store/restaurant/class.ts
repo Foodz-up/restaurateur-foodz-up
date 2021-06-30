@@ -2,7 +2,6 @@ import { ETypeRestaurant, IArticle, IMenu, IRestaurant } from '~/store/interface
 import AuthStore from '~/store/auth'
 export class Restaurant implements IRestaurant {
   constructor () {
-    this._id = {}
     this.name = ''
     this.type = ETypeRestaurant.GASTRO
     this.menus = []
@@ -23,7 +22,6 @@ export class Restaurant implements IRestaurant {
     this.waiting = 10
   }
 
-  _id: object
   name: string
   note: number
   waiting: number

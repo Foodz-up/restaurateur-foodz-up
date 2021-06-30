@@ -8,13 +8,15 @@
       <ButtonFoodzUp :title="'Ajouter un article'" class="mt-2 sm:mt-0 bg-primary text-white hover:bg-primary-80" @buttonClicked="toggleModal()" />
     </div>
 
-    <ListArticles
-      :key="componentListArticleKey"
-      :articles="storeArticles"
-      :restaurant-id="restaurantId"
-      @editArticle="editArticle"
-      @deleteArticle="deleteArticle"
-    />
+    <div v-if="storeArticles">
+      <ListArticles
+        :key="componentListArticleKey"
+        :articles="storeArticles"
+        :restaurant-id="restaurantId"
+        @editArticle="editArticle"
+        @deleteArticle="deleteArticle"
+      />
+    </div>
 
     <Modal :class="{'hidden': !modal}" :delete-button="false" @save="saveArticle()" @cancel="toggleModal()">
       <FormArticle :form-article="formArticle" />
@@ -68,8 +70,6 @@ export default class Articles extends Vue {
       ArticleStore.updateArticle(updatedArticle)
       // TODO: fix problem, the children have to auto update the content
       this.componentListArticleKey += 1
-
-      console.log(this.storeArticles)
     }
 
     deleteArticle (updatedArticle: IArticle) {
