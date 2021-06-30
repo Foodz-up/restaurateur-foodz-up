@@ -23,7 +23,7 @@ class RestaurantStore extends BaseStoreService<RestaurantState> {
   async getRestaurants () {
     try {
       const restaurant = await axios().get('/restaurants/me')
-      if (restaurant.status === 200 && restaurant.data.restaurant.length > 0) {
+      if (restaurant.status === 200 && restaurant.data.restaurant._id) {
         this.setRestaurant(restaurant.data.restaurant)
         ArticleStore.setArticles(restaurant.data.restaurant.articles)
         MenuStore.setMenus(restaurant.data.restaurant.menus)
