@@ -1,15 +1,16 @@
 <template>
-  <div class="m-4">
+  <div>
     <h1 class="text-center sm:text-left mt-1 text-4xl font-medium">
       Covid-19
     </h1>
 
     <hr class="mt-4 mb-12">
+    <LoremFoodzUp />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component({
   components: { }

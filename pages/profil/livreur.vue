@@ -1,15 +1,21 @@
 <template>
-  <div class="m-4">
-    <h1 class="text-center sm:text-lef tmt-1 text-4xl font-medium">
+  <div>
+    <h1 class="text-center sm:text-left mt-1 text-4xl font-medium">
       Devenez livreur
     </h1>
 
     <hr class="mt-4 mb-12">
+
+    <div>
+      <span>Lien pour s'inscrire : </span>
+      <a href="http://localhost:3001/auth/enregistrement" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">http://localhost:3001/auth/enregistrement</a>
+    </div>
+    <LoremFoodzUp />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'nuxt-property-decorator'
 
 @Component({
   components: { }
