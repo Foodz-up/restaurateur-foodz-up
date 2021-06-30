@@ -36,8 +36,7 @@ class ArticleStore extends BaseStoreService<ArticleState> {
     try {
       const updatedArticle = await axios().patch('/articles/me/update', article)
       if (updatedArticle.status === 200) {
-        console.log({ zzzzz: updatedArticle.data })
-
+        // FIX: need to save 2 time -> fix it
         this.commit(this.mutations.updateArticle, updatedArticle.data.article)
         NotificationStore.addNotification({ message: updatedArticle.data.message, status: updatedArticle.status })
       }
