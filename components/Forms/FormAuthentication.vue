@@ -66,6 +66,8 @@ export default {
         AuthStore.setToken({ accessToken: response.data.token.accessToken.accessToken, refreshToken: response.data.token.refreshToken })
         AuthStore.setUser(this.$auth.user)
 
+        RestaurantStore.getRestaurants()
+
         NotificationStore.addNotification({
           message: response.data.message,
           status: response.status

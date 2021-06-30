@@ -9,6 +9,7 @@ import AuthStore from '~/store/auth'
 import RestaurantStore from '~/store/restaurant'
 import ArticleStore from '~/store/article'
 import MenuStore from '~/store/menu'
+import OrderStore from '~/store/order'
 import NotificationStore from '~/store/notification'
 
 export default {
@@ -19,8 +20,9 @@ export default {
       AuthStore.setToken(null)
       AuthStore.setUser(null)
       RestaurantStore.setRestaurant(null)
-      ArticleStore.setArticles(null)
-      MenuStore.setMenus(null)
+      ArticleStore.setArticles([])
+      MenuStore.setMenus([])
+      OrderStore.setOrders([])
       this.$router.push('/auth/connexion')
       NotificationStore.addNotification({
         message: 'Vous êtes maintenant déconnecté',

@@ -55,10 +55,6 @@ export default class RestaurantProfil extends Vue {
       return this.storeRestaurant !== null
     }
 
-    mounted () {
-      RestaurantStore.getRestaurants()
-    }
-
     deleteRestaurant () {
       RestaurantStore.deleteRestaurant()
       this.closeModal()
