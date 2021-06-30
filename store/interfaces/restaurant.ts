@@ -6,6 +6,7 @@ export enum ETypeRestaurant {
 }
 
 export interface IRestaurant {
+    _id: object
     name: string
     type: ETypeRestaurant
     menus?: Array<IMenu>

@@ -40,26 +40,11 @@ export default class Articles extends Vue {
     componentListArticleKey: number = 0
     formArticle: IArticle = new Article()
 
-    articles: Array<IArticle> = [
-      { id: 1, type: 'Entrée', name: 'Foie gras maison', description: 'Servi avec sa confiture de figues', price: 5.20 },
-      { id: 2, type: 'Entrée', name: 'Salade César', description: 'Servi sous format d\'entrée', price: 4.00 },
-      { id: 3, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50, tag: 'Nouveau' },
-      { id: 4, type: 'Plat', name: 'Pavé de saumon', description: 'Servi avec salade / purée maison pu riz', price: 17.20 },
-      { id: 5, type: 'Déssert', name: 'Tiramisu', price: 6.30 },
-      { id: 6, type: 'Boisson', name: 'Coca-cola', description: '1.25 L', price: 2.40 },
-      { id: 7, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50 },
-      { id: 8, type: 'Plat', name: 'Hamburger savoyard', description: 'Servi avec salade et frites fraîches', price: 18.50 }
-    ];
-
     get storeArticles (): Array<IArticle> {
       return ArticleStore.articles
     }
 
     restaurantId:number = 1;
-
-    mounted () {
-      ArticleStore.setArticles(this.articles)
-    }
 
     toggleModal () {
       this.modal = !this.modal
@@ -74,7 +59,6 @@ export default class Articles extends Vue {
         return
       }
 
-      this.formArticle.id = ArticleStore.articles.length > 0 ? ArticleStore.articles[ArticleStore.articles.length - 1].id + 1 : 1
       ArticleStore.addArticle(this.formArticle)
       this.modal = !this.modal
       this.formArticle = new Article()
@@ -84,22 +68,12 @@ export default class Articles extends Vue {
       ArticleStore.updateArticle(updatedArticle)
       // TODO: fix problem, the children have to auto update the content
       this.componentListArticleKey += 1
+
+      console.log(this.storeArticles)
     }
 
     deleteArticle (updatedArticle: IArticle) {
       ArticleStore.deleteArticle(updatedArticle)
-      // try {
-      //   const response = await ArticleStore.deleteArticle(updatedArticle)
-      //   NotificationStore.addNotification({
-      //     message: response.data.message,
-      //     status: response.status
-      //   })
-      // } catch (error) {
-      //   NotificationStore.addNotification({
-      //     message: error.response.data.message,
-      //     status: error.response.status
-      //   })
-      // }
     }
 }
 </script>

@@ -8,6 +8,7 @@ export class Article implements IArticle {
     this.description = ''
     this.price = 0
     this.tag = ''
+    this.picture = 'noarticle.jpg'
   }
 
   id: number
@@ -16,4 +17,5 @@ export class Article implements IArticle {
   description: string
   price: number
   tag: string
+  picture: string
 }
