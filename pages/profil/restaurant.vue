@@ -9,8 +9,8 @@
     </div>
     <CardOwnRestaurant
       v-if="storeRestaurant"
-      :id="storeRestaurant.id"
-      :key="storeRestaurant.id"
+      :id="storeRestaurant._id"
+      :key="storeRestaurant._id"
       :name="storeRestaurant.name"
       :type="storeRestaurant.type"
       :avaibilities="storeRestaurant.timetable"

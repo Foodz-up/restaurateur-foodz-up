@@ -5,6 +5,7 @@ import { RestaurantState } from '~/store/restaurant/state'
 import { IRestaurant } from '~/store/interfaces/'
 import axios from '~/plugins/axios'
 import NotificationStore from '~/store/notification'
+import ArticleStore from '~/store/article'
 
 class RestaurantStore extends BaseStoreService<RestaurantState> {
   public mutations = RestaurantStoreModule.mutations
@@ -22,7 +23,8 @@ class RestaurantStore extends BaseStoreService<RestaurantState> {
     try {
       const restaurant = await axios().get('/restaurants/me')
       if (restaurant.status === 200) {
-        this.setRestaurant(restaurant.data)
+        this.setRestaurant(restaurant.data.restaurant)
+        ArticleStore.setArticles(restaurant.data.restaurant.articles)
       }
     } catch (error: any) {
       NotificationStore.addNotification({ message: error.response.data.message, status: error.response.status })
@@ -33,7 +35,7 @@ class RestaurantStore extends BaseStoreService<RestaurantState> {
     try {
       const updatedRestaurant = await axios().put('/restaurants/me', restaurant)
       if (updatedRestaurant.status === 200) {
-        this.commit(this.mutations.updateRestaurant, restaurant)
+        this.commit(this.mutations.updateRestaurant, updatedRestaurant.data.restaurant)
         NotificationStore.addNotification({ message: updatedRestaurant.data.message, status: updatedRestaurant.status })
       }
     } catch (error: any) {
@@ -57,7 +59,7 @@ class RestaurantStore extends BaseStoreService<RestaurantState> {
     try {
       const newRestaurant = await axios().post('/restaurants/me', restaurant)
       if (newRestaurant.status === 200) {
-        this.setRestaurant(restaurant)
+        this.setRestaurant(newRestaurant.data.restaurant)
         NotificationStore.addNotification({ message: newRestaurant.data.message, status: newRestaurant.status })
       }
     } catch (error: any) {

@@ -45,6 +45,7 @@
 import { Component, Vue, Prop } from 'nuxt-property-decorator'
 import InputFoodzUp from '~/components/Inputs/InputFoodzUp.vue'
 import InputSelect from '~/components/Inputs/InputSelect.vue'
+import { IArticle } from '~/store/interfaces'
 
 @Component({
   components: { InputFoodzUp, InputSelect }
@@ -58,7 +59,7 @@ export default class FormArticle extends Vue {
     ]
 
     @Prop({ required: true })
-    formArticle!: { type: string, name: string, description: string, price: number, tag?:string }
+    formArticle!: IArticle
 }
 </script>
 

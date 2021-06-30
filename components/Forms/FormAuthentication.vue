@@ -41,6 +41,7 @@
 <script>
 import AuthStore from '~/store/auth'
 import NotificationStore from '~/store/notification'
+import RestaurantStore from '~/store/restaurant'
 
 export default {
   data () {
@@ -69,6 +70,9 @@ export default {
           message: response.data.message,
           status: response.status
         })
+
+        RestaurantStore.getRestaurant()
+
         this.$router.push('/commandes')
       } catch (error) {
         NotificationStore.addNotification({

@@ -7,8 +7,8 @@
       <div class="grid gap-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         <CardArticleRestaurant
           v-for="article in articleArrayByType"
-          :id="article.id"
-          :key="article.id"
+          :id="article._id"
+          :key="article._id"
           :description="article.description"
           :name="article.name"
           :price="article.price"
@@ -17,7 +17,7 @@
           :menu-articles="article.menuArticles"
           :restaurant-id="restaurantId"
           class="pb-5 border-gray-100 border-b-2 sm:border-none sm:pb-0"
-          @needUpdateCard="openModal(article.id)"
+          @needUpdateCard="openModal(article._id)"
         />
       </div>
       <Modal :class="{'hidden': !modal}" @save="editArticle()" @remove="deleteArticle()" @cancel="closeModal()">
@@ -47,7 +47,7 @@ export default class ListArticles extends Vue {
     restaurantId!: number
 
     modal:boolean = false;
-    idSelectedArticle: number =0;
+    idSelectedArticle: {} = {};
     formArticle: IArticle = new Article()
 
     get splitedByType () {
@@ -64,9 +64,9 @@ export default class ListArticles extends Vue {
       return newObject
     }
 
-    openModal (id: number) {
+    openModal (id: object) {
       this.idSelectedArticle = id
-      const selectedArticle = this.articles.find(article => article.id === id)
+      const selectedArticle = this.articles.find(article => article._id === id)
       this.formArticle = { ...this.formArticle, ...selectedArticle }
       this.modal = true
     }
