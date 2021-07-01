@@ -5,26 +5,29 @@
 </template>
 
 <script>
+include('https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js')
+include('../serviceWorker.js')
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAYabQWHXNLZrHkqCczu8kRTfdctBmfjbY',
+  authDomain: 'api-foodz-up.firebaseapp.com',
+  projectId: 'api-foodz-up',
+  storageBucket: 'api-foodz-up.appspot.com',
+  messagingSenderId: '107979851813',
+  appId: '1:107979851813:web:5b01f7fbaaf405463797cc',
+  measurementId: 'G-KC6S8KBN97'
+}
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
 
 export default
 {
-  mounted () {
-    this.socket = this.$nuxtSocket({
-      channel: '/index'
-    })
-    /* Listen for events: */
-    this.socket
-      .on('someEvent', (msg, cb) => {
-        console.log(msg, cb)
-      })
-  },
-  methods: {
-    method1 () {
-      /* Emit events */
-      this.socket.emit('method1', {
-        hello: 'world'
-      }, (resp) => {
-        /* Handle response, if any */
+  mounted: {
+    startMessaging () {
+      const messaging = firebase.messaging()
+      getStartToken()
+      messaging.onMessage(function (payload) {
+        console.log('on Message', payload)
       })
     }
   }
