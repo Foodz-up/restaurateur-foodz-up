@@ -4,6 +4,7 @@ import { OrderState } from '~/store/order/state'
 import { IOrder, EOrderState } from '~/store/interfaces/'
 import axios from '~/plugins/axios'
 import NotificationStore from '~/store/notification'
+import firebaseMessaging from '~/plugins/fireHandler'
 
 class OrderStore extends BaseStoreService<OrderState> {
   public mutations = OrderStoreModule.mutations
@@ -13,7 +14,7 @@ class OrderStore extends BaseStoreService<OrderState> {
     return this.read<any>(this.getters.orders)
   }
 
-  getOrder (idOrder: string): IOrder | undefined {
+  getOrder (idOrder: object): IOrder | undefined {
     return this.orders.find(order => order._id === idOrder)
   }
 
@@ -29,6 +30,13 @@ class OrderStore extends BaseStoreService<OrderState> {
     } catch (error: any) {
       NotificationStore.addNotification({ message: error.response.data.message, status: error.response.status })
     }
+  }
+
+  initFirebase () {
+    firebaseMessaging.getToken()
+    firebaseMessaging.onMessage(function (payload) {
+      console.log('on Message', payload)
+    })
   }
 
   setOrders (orders: Array<IOrder>) {

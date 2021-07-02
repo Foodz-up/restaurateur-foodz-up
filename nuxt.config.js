@@ -23,7 +23,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/foodz-components',
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/fireHandler'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

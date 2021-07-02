@@ -24,6 +24,7 @@ export default class Orders extends Vue {
     if (OrderStore.orders.length === 0) {
       OrderStore.getOrders()
     }
+    OrderStore.initFirebase()
   }
 
   get storeOrders ():Array<IOrder> {
