@@ -21,7 +21,6 @@ export const OrderStoreModule = {
     },
     updateOrder (state: OrderState, payload: { orderId: object, status: EOrderState }) {
       const orderSelected = state.orders.findIndex(order => order._id === payload.orderId)
-      console.log({ payload, os: state.orders, orderSelected })
       state.orders[orderSelected].status = payload.status
     }
   }

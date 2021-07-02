@@ -20,11 +20,9 @@ class OrderStore extends BaseStoreService<OrderState> {
   async getOrders () {
     try {
       const orders = await axios().get('orders/me/restaurator')
-      console.log({ orders })
 
       if (orders.status === 200 && orders.data.orders.length > 0) {
         this.addOrders(orders.data.orders)
-        console.log({ storeOrder: this.orders })
       }
     } catch (error: any) {
       NotificationStore.addNotification({ message: error.response.data.message, status: error.response.status })
@@ -46,13 +44,11 @@ class OrderStore extends BaseStoreService<OrderState> {
   async updateOrder (orderId: object, status: EOrderState) {
     try {
       const order = await axios().patch('orders/me/update', { orderId, status })
-      console.log({ order })
 
       if (order.status === 200) {
         this.commit(this.mutations.updateOrder, { orderId: order.data.order._id, status: order.data.order.status })
       }
     } catch (error: any) {
-      console.log({ error })
       NotificationStore.addNotification({ message: error.response.data.message, status: error.response.status })
     }
   }

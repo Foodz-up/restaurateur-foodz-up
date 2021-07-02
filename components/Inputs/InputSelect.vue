@@ -52,11 +52,9 @@ export default class InputSelect extends Vue {
 
   changeValue (option: string) {
     this.value = option
-    console.log(this.value)
   }
 
   test (e:string) {
-    console.log(e)
   }
 }
 </script>
